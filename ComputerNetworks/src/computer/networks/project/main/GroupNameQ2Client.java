@@ -50,7 +50,7 @@ public class GroupNameQ2Client implements Runnable {
 	public static void main(String[] args) {
 		// TODO code application logic here
 		GroupNameQ2Client client = new GroupNameQ2Client();
-		client.getUserInput();
+		client.processUserInput();
 
 		// checks the input
 		if (client.givenUserInpt.equalsIgnoreCase("local")) {
@@ -64,17 +64,78 @@ public class GroupNameQ2Client implements Runnable {
 	// Method getServerInput: used to read input from user
 	public void processUserInput() {
 		userInput = new Scanner(System.in);
-		System.out.print("Please enter a choice, \n 1. Web Address. \n 2.Localhost. \n Please enter either 1 or 2");
-		int choice = userInput.nextInt();
-
+		int choice = (int) getUserInput(Boolean.TRUE);
 		if (choice == 1) {
 			this.initThreads();
+		}else{
+			get
 		}
+	}
+
+	public enum InputTypes {
+		FILE, BUFFER_SIZE, TIMEOUT, FILE_ERROR, IS_OPTION_CORRECT, ENTER_WELCOME_OPTION
+	}
+
+	private Object getUserInput(boolean isWelcomeMessageTobeDisplayed) {
+		if (isWelcomeMessageTobeDisplayed) {
+			System.out.print("Please enter a choice, \n 1. Web Address. \n 2.Localhost. \n Please enter either 1 or 2");
+			return validateUserInput(userInput.nextInt(), InputTypes.IS_OPTION_CORRECT);
+		} else {
+			System.out.println("Please enter the file path of the file you want to send");
+			String filePath = userInput.next();
+
+		}
+	}
+
+	protected Object validateUserInput(Object givenInput, InputTypes currentOptionToCheck) {
+		boolean isUserValueCorrect = Boolean.FALSE;
+
+		while (!isUserValueCorrect) {
+			switch (currentOptionToCheck) {
+			case FILE:
+				File userFile = new File((String) givenInput);
+				if (userFile.isFile()) {
+					isUserValueCorrect = Boolean.TRUE;
+					continue;
+				} else {
+					currentOptionToCheck = InputTypes.FILE_ERROR;
+					continue;
+				}
+			case FILE_ERROR:
+				System.out.println("Please enter the file path again, the entered file path is wrong!");
+				currentOptionToCheck = InputTypes.FILE;
+				givenInput = userInput.next();
+				continue;
+			case BUFFER_SIZE:
+				System.out.println("Please enter the Buffer Size");
+				int input = userInput.nextInt();
+			case IS_OPTION_CORRECT:
+				int userChoiceInput = (int) givenInput;
+				if (userChoiceInput == 1 || userChoiceInput == 2) {
+					isUserValueCorrect = Boolean.TRUE;
+					return userInput;
+				} else {
+					currentOptionToCheck = InputTypes.ENTER_WELCOME_OPTION;
+					continue;
+				}
+			case ENTER_WELCOME_OPTION:
+				System.out.print("Please enter a choice, \n 1. Web Address. \n 2.Localhost. \n Please enter either 1 or 2");
+				givenInput = userInput.nextInt();
+				currentOptionToCheck = InputTypes.IS_OPTION_CORRECT;
+				continue;
+			case TIMEOUT:
+				System.out.println("Please enter an integer value to set timeout in Milliseconds");
+				this.timeout = userInput.nextInt();
+				isUserValueCorrect = Boolean.TRUE;
+				continue;
+			}
+		}
+		return null;
 	}
 
 	// Method getUDPInput: used to read input from user
 	public void getUDPInput() {
-		System.out.println("Enter file path, buffer size and timeout separated by space");
+
 		givenUserInpt = userInput.nextLine();
 		bufferSize = Integer.parseInt(givenUserInpt.split(" ")[1]); // set
 		// bufferSize
