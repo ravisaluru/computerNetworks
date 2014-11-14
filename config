@@ -1,0 +1,11 @@
+[core]
+	symlinks = false
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	logallrefupdates = false
+[user]
+	name = Ravi
+	email = saluru.r@gmail.com
+[remote "origin"]
+	url = https://github.com/ravisaluru/computerNetworks.git
