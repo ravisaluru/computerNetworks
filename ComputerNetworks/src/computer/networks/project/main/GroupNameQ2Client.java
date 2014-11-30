@@ -27,60 +27,53 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/*
- * Client class
+/**
+ * @author Ravi Chandra Group
  */
 public class GroupNameQ2Client {
 
-	// Instance variables
 	private Scanner userInput;
 	private String[] givenUserInpt = new String[5];
-	private boolean isAckReceived; // boolean value that determines if ack has
-	// been
-	// received
-	private boolean transferDone = false; // boolean flag to indicate when it is
+	private boolean isAckReceived;
+	private boolean isTransferDone = false;
 	protected static final String FILE_KEY = "FILE";
 	protected static final String BUFFER_KEY = "BUFFER";
 	protected static final String TIMEOUT_KEY = "TIMEOUT";
 	protected static final String SYSTEM_PORT_KEY = "PORT";
-	private byte[] dataBuffer; // Represents buffer that holds data to be sent
-	private int bufferSize; // Represents buffer size
-	private int fileSize; // Represents file size
-	private int timeout; // Holds timeout value
-	private int NBE = 0; // Next expected byte
-	private int S; // Start sequence
-	private int E; // End sequence
-	private Integer systemPortToBeUsed = 12345; // Port used for communication
-	private DatagramSocket socketEntry; // Reference for socket used to send and
-	// receive packets
-	private DatagramPacket packetsSent; // Reference for packets sent
-	private DatagramPacket packetsReceived; // Reference for packets received
-	private InetAddress hostIPAddress; // Reference to the Receiver's IP details
+	private byte[] dataBuffer;
+	private int bufferSize;
+	private int requestedFileSize;
+	private int userSpecifiedTimeOut;
+	private int nextByte = 0;
+	private int startOfSequence;
+	private int endOfSequence;
+	private Integer systemPortToBeUsed = 12345;
+	private DatagramSocket socketToBeUsed;
+	private DatagramPacket packetsSent;
+	private DatagramPacket packetsReceived;
+	private InetAddress hostIPAddress;
 	private static ArrayList<String> listOfWebAddress;
 	private static int currentWebAddressToProcess = 0;
 	public static final String LAST_PACKET = "LAST_PACKET";
 	private final Lock lock = new ReentrantLock();
 
-	// Method main
 	public static void main(String[] args) {
 		GroupNameQ2Client client = new GroupNameQ2Client();
 		client.processUserInput();
-
-		// checks the input
-		if ("localhost".equalsIgnoreCase(client.givenUserInpt[3])) {
-			client.setBufferAndTimeoutValues();
-			client.processLocalHost();
-		}
 	}
 
-	// Method getServerInput: used to read input from user
+	/**
+	 * This method would process the user input for both local and web address
+	 */
 	public void processUserInput() {
 		userInput = new Scanner(System.in);
 		int choice = Integer.parseInt((String) getUserInput(Boolean.TRUE));
 		if (choice == 1) {
-			this.initThreads();
+			this.processGetWebAdressRequests();
 		} else {
 			getUserInput(Boolean.FALSE);
+			setBufferAndTimeoutValues();
+			processLocalHost();
 		}
 	}
 
@@ -88,6 +81,10 @@ public class GroupNameQ2Client {
 		FILE, BUFFER_SIZE, TIMEOUT, FILE_ERROR, IS_OPTION_CORRECT, ENTER_WELCOME_OPTION, PORT_NUMBER
 	}
 
+	/**
+	 * This method is specifically designed to process local host requests. This
+	 * will also do some validation
+	 */
 	private Object getUserInput(boolean isWelcomeMessageTobeDisplayed) {
 		if (isWelcomeMessageTobeDisplayed) {
 			System.out.print("Please enter a choice, \n 1. Web Address. \n 2.Localhost. \n Please enter either 1 or 2");
@@ -105,6 +102,9 @@ public class GroupNameQ2Client {
 		}
 	}
 
+	/**
+	 * This method handles the user validation
+	 */
 	protected Object validateUserInput(Object givenInput, InputTypes currentOptionToCheck) {
 		boolean isUserValueCorrect = Boolean.FALSE;
 
@@ -149,9 +149,9 @@ public class GroupNameQ2Client {
 				continue;
 			case TIMEOUT:
 				System.out.println("Please enter an integer value to set timeout in Milliseconds");
-				this.timeout = userInput.nextInt();
+				this.userSpecifiedTimeOut = userInput.nextInt();
 				isUserValueCorrect = Boolean.TRUE;
-				return this.timeout;
+				return this.userSpecifiedTimeOut;
 			case PORT_NUMBER:
 				System.out.println("Please enter the port number you want to send as a Number, example 12345");
 				if (userInput.hasNextInt()) {
@@ -166,19 +166,19 @@ public class GroupNameQ2Client {
 		return null;
 	}
 
+	/**
+	 * instantiate some variables
+	 */
 	public void setBufferAndTimeoutValues() {
 		bufferSize = Integer.parseInt(givenUserInpt[1]);
-		timeout = Integer.parseInt(givenUserInpt[2]);
+		userSpecifiedTimeOut = Integer.parseInt(givenUserInpt[2]);
 	}
 
-	// The thread handler method
-	public void initThreads() {
-
+	public void processGetWebAdressRequests() {
 		listOfWebAddress = new ArrayList<String>();
 		getUserInputForWebAddress(InputTypes.ENTER_WELCOME_OPTION);
 		int numberOfThreadsToCreate = listOfWebAddress.size();
 		ExecutorService totalThreadsToCreate = Executors.newFixedThreadPool(numberOfThreadsToCreate);
-
 		for (int i = 0; i < numberOfThreadsToCreate; i++) {
 			totalThreadsToCreate.submit(new Runnable() {
 				@Override
@@ -190,6 +190,10 @@ public class GroupNameQ2Client {
 		totalThreadsToCreate.shutdown();
 	}
 
+	/**
+	 * This method asks the user for the list of web address for which a get
+	 * request needs to be made
+	 */
 	public void getUserInputForWebAddress(InputTypes key) {
 		switch (key) {
 		case ENTER_WELCOME_OPTION:
@@ -213,6 +217,12 @@ public class GroupNameQ2Client {
 		}
 	}
 
+	/**
+	 * The main algorithm to process the get request, it will display the result
+	 * on the console and also write and save the response of the individual web
+	 * address in a file. The file name is choose in accordance to the web
+	 * address for understandability.
+	 */
 	public void runLogic() {
 
 		String name = Thread.currentThread().getName();
@@ -221,7 +231,7 @@ public class GroupNameQ2Client {
 		Socket socket = new Socket();
 		BufferedWriter bWriter = null;
 		BufferedReader bReader = null;
-		File file = new File("GET_RESPONSE_OF_" + listOfWebAddress.get(currentIndex) + ".txt");
+		File file = new File("GET_response_of_" + listOfWebAddress.get(currentIndex) + ".txt");
 		System.out.println("Printing output for thread =[" + name + "For the url =[" + listOfWebAddress.get(currentIndex) + "]");
 
 		try {
@@ -254,6 +264,9 @@ public class GroupNameQ2Client {
 		}
 	}
 
+	/*
+	 * This method controls synchronized incrementing of the index variable
+	 */
 	public int getCurrentWebAddressRequestToProcessId() {
 		try {
 			lock.lock();
@@ -265,12 +278,12 @@ public class GroupNameQ2Client {
 		}
 	}
 
-	// Method to process Local Host UDP communication
+	/**
+	 * This method would process the local host calls
+	 */
 	public void processLocalHost() {
-		// Initializing socket and host computer
 		try {
-			socketEntry = new DatagramSocket();
-			// host = Inet4Address.getByName("169.254.112.231");
+			socketToBeUsed = new DatagramSocket();
 			hostIPAddress = Inet4Address.getByName("localhost");
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -278,76 +291,65 @@ public class GroupNameQ2Client {
 		}
 
 		try {
-			socketEntry.setSoTimeout(1000); // Default time to wait before
-			// resending
-			// packet
+			socketToBeUsed.setSoTimeout(1000);
 		} catch (SocketException ex) {
 		}
-
-		isAckReceived = false; // Set boolean flag to false
-
-		// keeps sending the input entered by user in one packet until ack is
-		// received
+		isAckReceived = false;
 		do {
 
-			dataBuffer = getBufferForDataToSend();// loading
-			// buffer
-			// to
-			// be
-			// sent
-			sendPacket();
-			receivePacket();
+			dataBuffer = getBufferForDataToSend();
+			sendDataPacket();
+			receiveDataPacket();
 			if (!isAckReceived) {
 				System.out.println("No ack from server, resending packets...");
 			}
 		} while (!isAckReceived);
 
-		// Ack received
 		System.out.println("Acknowledgement received");
-		fileSize = Integer.parseInt(new String(packetsReceived.getData()).trim().split(" ")[1]);
-		System.out.println("File Size: " + fileSize);
+		requestedFileSize = Integer.parseInt(new String(packetsReceived.getData()).trim().split(" ")[1]);
+		System.out.println("File Size: " + requestedFileSize);
 
 		try {
-			// set timeout size according to user input
-			socketEntry.setSoTimeout(timeout);
+			socketToBeUsed.setSoTimeout(userSpecifiedTimeOut);
 		} catch (SocketException ex) {
 		}
 
-		// Wait for the next B bytes or remaining bytes in file
 		do {
 			isAckReceived = false;
-			receivePacket();
-			S = (packetsReceived.getData()[0] * 127) + (packetsReceived.getData()[1]);
-			if (S == NBE && isAckReceived) {
-				if (S + bufferSize > fileSize) {
-					E = fileSize;
-					NBE = -1;
-					transferDone = true;
+			receiveDataPacket();
+			startOfSequence = (packetsReceived.getData()[0] * 127) + (packetsReceived.getData()[1]);
+			if (startOfSequence == nextByte && isAckReceived) {
+				if (startOfSequence + bufferSize > requestedFileSize) {
+					endOfSequence = requestedFileSize;
+					nextByte = -1;
+					isTransferDone = true;
 				} else {
-					E = S + bufferSize - 1;
-					NBE += bufferSize;
+					endOfSequence = startOfSequence + bufferSize - 1;
+					nextByte += bufferSize;
 				}
-				System.out.println("\nReceived sequence number " + S + " to " + E);
+				System.out.println("\nReceived sequence number " + startOfSequence + " to " + endOfSequence);
 				System.out.println(new String(Arrays.copyOfRange(dataBuffer, 2, dataBuffer.length)).trim());
 				System.out.println();
 			} else if (isAckReceived) {
-				String dataReceieved = new String(Arrays.copyOfRange(dataBuffer, 2, dataBuffer.length)).trim();
+				String dataReceieved = new String(Arrays.copyOfRange(dataBuffer, 0, dataBuffer.length)).trim();
+				System.out.println(dataReceieved + " has been received, end of all requests");
 				if (LAST_PACKET.equals(dataReceieved)) {
-					transferDone = true;
+					isTransferDone = true;
 				}
 			}
 			dataBuffer = new byte[2];
-			dataBuffer[0] = (byte) (NBE / 127);
-			dataBuffer[1] = (byte) (NBE % 127);
-			sendPacket();
-			if (dataBuffer[0] < 0) {
-				transferDone = true;
-			}
-		} while (!transferDone);
+			dataBuffer[0] = (byte) (nextByte / 127);
+			dataBuffer[1] = (byte) (nextByte % 127);
+			sendDataPacket();
+		} while (!isTransferDone);
 		System.out.println("DONE!!!");
 		System.exit(-1);
 	}
 
+	/**
+	 * This method would create a Map Object and stuff the user inputs. It will
+	 * return the byte representation of the object or serialized version
+	 */
 	protected byte[] getBufferForDataToSend() {
 		HashMap<String, String> dataToSend = new HashMap<String, String>();
 		dataToSend.put(FILE_KEY, givenUserInpt[0]);
@@ -365,11 +367,13 @@ public class GroupNameQ2Client {
 		return byteOutputStream.toByteArray();
 	}
 
-	// Method to send packets
-	public void sendPacket() {
+	/**
+	 * This method would send the data packets
+	 */
+	public void sendDataPacket() {
 		packetsSent = new DatagramPacket(dataBuffer, dataBuffer.length, hostIPAddress, systemPortToBeUsed);
 		try {
-			socketEntry.send(packetsSent);
+			socketToBeUsed.send(packetsSent);
 			systemPortToBeUsed = Integer.parseInt(givenUserInpt[4]);
 		} catch (IOException ex) {
 			System.out.println("Data Packet Not Sent, the error message is =[" + ex.getMessage() + "]");
@@ -379,18 +383,16 @@ public class GroupNameQ2Client {
 
 	}
 
-	// Method to receive packets
-	public void receivePacket() {
-		dataBuffer = new byte[bufferSize + 2]; // set buffer size according to
-		// user
-		// input
+	/**
+	 * This method would receive the data packets
+	 */
+	public void receiveDataPacket() {
+		dataBuffer = new byte[bufferSize + 2];
 		packetsReceived = new DatagramPacket(dataBuffer, dataBuffer.length);
 		try {
-			socketEntry.receive(packetsReceived);
+			socketToBeUsed.receive(packetsReceived);
 			isAckReceived = true;
 		} catch (SocketTimeoutException ex) {
-			// System.out.println("timeout"); Uncomment this line to see the
-			// timeout instances
 		} catch (IOException ex) {
 			System.out.println("Error receiving packet");
 		}

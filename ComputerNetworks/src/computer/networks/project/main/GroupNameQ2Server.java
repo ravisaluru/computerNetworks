@@ -11,101 +11,90 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.util.HashMap;
 
-/*
- * Server class
+/**
+ * @author Ravi Chandra Group
  */
 public class GroupNameQ2Server {
 
-	private DatagramSocket socket;
-	private DatagramPacket recvPacket;
-	private DatagramPacket sendPacket;
-	private String ackMsg;
+	private DatagramSocket dataSocket;
+	private DatagramPacket receivedPacketFromClient;
+	private DatagramPacket sendPacketToClient;
+	private String messagePacket;
 	private int timeoutValueSetByClient;
 	private int byteSizeBeingSentByClient;
-	private int ackNo = 0;
-	private int NBE = 0;
-	private int E = 0;
-	private boolean ackRecvd; // boolean value that determines if ack has been
-	// received
+	private int acknowledmentNumber = 0;
+	private int nextByte = 0;
+	private int endOfSequence = 0;
+	private boolean isMessagePacketAcknowledgemtRecieved;
 	private boolean flag = true;
-	private static int PORT = 12345;
+	private static int serverDefaultPortNumber = 12345;
 	private File fileTOFetchByServer;
-	private FileReader fReader;
-	private byte[] buffer; // Represents buffer that holds data
-	private int bufferSize; // Represents buffer size
+	private FileReader fileReaderObject;
+	private byte[] defaultBuffer;
+	private int bufferSizeAsPerClient;
 
-	// Method main
 	public static void main(String[] args) {
 		GroupNameQ2Server server = new GroupNameQ2Server();
 		server.processRequest();
 	}
 
-	// Method used to process request
 	public void processRequest() {
 		try {
-			socket = new DatagramSocket(PORT);
+			dataSocket = new DatagramSocket(serverDefaultPortNumber);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
-		buffer = new byte[1400]; // Initialize buffer array
-		// receive first packet : User input from client
+		defaultBuffer = new byte[1400];
 		System.out.println("Waiting for Packets");
-		receivePacket(); // receive packets
+		receiveDataPacket();
 		System.out.println("Packet received \n");
 
 		intializeParamters();
-		// Printing their values
 		System.out.println("_______________________________");
 		System.out.println("Name of File requested by Client: " + fileTOFetchByServer.getName());
 		System.out.println("Number of Bytes of Data Sent: " + byteSizeBeingSentByClient);
 		System.out.println("Timeout Value set by Client: " + timeoutValueSetByClient);
-		System.out.println("Timeout Value set by Client: " + recvPacket.getAddress().getHostAddress());
+		System.out.println("Timeout Value set by Client: " + receivedPacketFromClient.getAddress().getHostAddress());
 
 		System.out.println("_______________________________");
 
-		// Prepare acknowledgment
-		ackMsg = "Ack " + fileTOFetchByServer.length();
-		buffer = ackMsg.getBytes();
-		// Send ack
-		sendPacket();
+		messagePacket = "Acknowledgement " + fileTOFetchByServer.length();
+		defaultBuffer = messagePacket.getBytes();
+		sendDataPacket();
 
 		try {
-			fReader = new FileReader(fileTOFetchByServer);
+			fileReaderObject = new FileReader(fileTOFetchByServer);
 		} catch (FileNotFoundException ex) {
 		}
 		try {
-			socket.setSoTimeout(2 * timeoutValueSetByClient); // Set server
-			// timeout
+			dataSocket.setSoTimeout(2 * timeoutValueSetByClient);
 		} catch (SocketException ex) {
 		}
 
-		// Perform the file reading, sending and reciving packets until DONE
 		do {
-			ackRecvd = false;
-			// check if client has read data before reloading buffer
+			isMessagePacketAcknowledgemtRecieved = false;
 			if (flag) {
-				loadBuffer();
-				if ((NBE + byteSizeBeingSentByClient) >= fileTOFetchByServer.length()) {
-					E = (int) fileTOFetchByServer.length();
+				loadBufferMethod();
+				if ((nextByte + byteSizeBeingSentByClient) >= fileTOFetchByServer.length()) {
+					endOfSequence = (int) fileTOFetchByServer.length();
 				} else {
-					E = NBE + byteSizeBeingSentByClient - 1;
+					endOfSequence = nextByte + byteSizeBeingSentByClient - 1;
 				}
 			}
 			do {
-				System.out.println("\nSending sequence number " + NBE + " to " + E);
-				sendPacket();
-				receivePacket();
-				ackNo = (recvPacket.getData()[0] * 127) + (recvPacket.getData()[1]);
-				System.out.println("Received ack number " + ackNo);
-			} while (!ackRecvd);
-			// ack less than 0 indicates done
-			if (ackNo < 0) {
+				System.out.println("\nSending sequence number " + nextByte + " to " + endOfSequence);
+				sendDataPacket();
+				receiveDataPacket();
+				acknowledmentNumber = (receivedPacketFromClient.getData()[0] * 127) + (receivedPacketFromClient.getData()[1]);
+				System.out.println("Received ack number " + acknowledmentNumber);
+			} while (!isMessagePacketAcknowledgemtRecieved);
+			if (acknowledmentNumber < 0) {
 				System.out.println("DONE!!!");
 				sendDonePacket();
 				break;
 			}
-			if (E + 1 == ackNo) {
-				NBE += byteSizeBeingSentByClient;
+			if (endOfSequence + 1 == acknowledmentNumber) {
+				nextByte += byteSizeBeingSentByClient;
 				flag = true;
 			} else {
 				flag = false;
@@ -118,23 +107,20 @@ public class GroupNameQ2Server {
 	@SuppressWarnings("unchecked")
 	public void intializeParamters() {
 		HashMap<String, String> dataReceieved = new HashMap<String, String>();
-		// Set file, B and timeout based on user input received from packet
-		ByteArrayInputStream byteIntputStream = new ByteArrayInputStream(buffer);
+		ByteArrayInputStream byteIntputStream = new ByteArrayInputStream(defaultBuffer);
 		ObjectInputStream objectIntput = null;
 		try {
 			objectIntput = new ObjectInputStream(byteIntputStream);
 			dataReceieved = (HashMap<String, String>) objectIntput.readObject();
-			PORT = Integer.parseInt(dataReceieved.get(GroupNameQ2Client.SYSTEM_PORT_KEY));
+			serverDefaultPortNumber = Integer.parseInt(dataReceieved.get(GroupNameQ2Client.SYSTEM_PORT_KEY));
 			fileTOFetchByServer = new File(dataReceieved.get(GroupNameQ2Client.FILE_KEY));
 			byteSizeBeingSentByClient = Integer.parseInt(dataReceieved.get(GroupNameQ2Client.BUFFER_KEY));
 			timeoutValueSetByClient = Integer.parseInt(dataReceieved.get(GroupNameQ2Client.TIMEOUT_KEY));
-			socket.close();
-			socket = new DatagramSocket(PORT);
+			dataSocket.close();
+			dataSocket = new DatagramSocket(serverDefaultPortNumber);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NullPointerException ex) {
 			System.out.println("Oops something went wrong , the message is =[" + ex.getMessage() + "]");
@@ -142,63 +128,61 @@ public class GroupNameQ2Server {
 
 	}
 
-	// Method used to receive incoming packets
-	public void receivePacket() {
-		bufferSize = buffer.length;
-		recvPacket = new DatagramPacket(buffer, bufferSize);
+	public void receiveDataPacket() {
+		bufferSizeAsPerClient = defaultBuffer.length;
+		receivedPacketFromClient = new DatagramPacket(defaultBuffer, bufferSizeAsPerClient);
 		try {
-			socket.receive(recvPacket);
-			ackRecvd = true;
+			dataSocket.receive(receivedPacketFromClient);
+			isMessagePacketAcknowledgemtRecieved = true;
 		} catch (IOException ex) {
 		}
 	}
 
-	// Method used to send packets
-	public void sendPacket() {
-		bufferSize = buffer.length;
+	public void sendDataPacket() {
+		bufferSizeAsPerClient = defaultBuffer.length;
 		try {
-			sendPacket = new DatagramPacket(buffer, bufferSize, recvPacket.getAddress(), recvPacket.getPort());
-			socket.send(sendPacket);
+			sendPacketToClient = new DatagramPacket(defaultBuffer, bufferSizeAsPerClient, receivedPacketFromClient.getAddress(),
+					receivedPacketFromClient.getPort());
+			dataSocket.send(sendPacketToClient);
 		} catch (Exception ex) {
-			// System.out.println("Error sending packet");
+			System.out.println("Error sending packet" + ex.getMessage());
 		}
 	}
 
 	public void sendDonePacket() {
-		buffer = GroupNameQ2Client.LAST_PACKET.getBytes();
-		bufferSize = buffer.length;
-		bufferSize = bufferSize + 2;
+		defaultBuffer = GroupNameQ2Client.LAST_PACKET.getBytes();
+		bufferSizeAsPerClient = defaultBuffer.length;
 		try {
-			sendPacket = new DatagramPacket(buffer, bufferSize, recvPacket.getAddress(), recvPacket.getPort());
-			socket.send(sendPacket);
+			sendPacketToClient = new DatagramPacket(defaultBuffer, bufferSizeAsPerClient, receivedPacketFromClient.getAddress(),
+					receivedPacketFromClient.getPort());
+			dataSocket.send(sendPacketToClient);
 		} catch (Exception ex) {
-			// System.out.println("Error sending packet");
+			System.out.println("Error sending packet" + ex.getMessage());
 		}
 	}
 
-	// Method used to load buffer from file
-	public void loadBuffer() {
-		if (fileTOFetchByServer.length() > (byteSizeBeingSentByClient + NBE)) {
-			buffer = new byte[byteSizeBeingSentByClient + 2];
+	public void loadBufferMethod() {
+		if (fileTOFetchByServer.length() > (byteSizeBeingSentByClient + nextByte)) {
+			defaultBuffer = new byte[byteSizeBeingSentByClient + 2];
 		} else {
-			buffer = new byte[(int) (fileTOFetchByServer.length() - NBE) + 2];
+			defaultBuffer = new byte[(int) (fileTOFetchByServer.length() - nextByte) + 2];
 		}
 
-		int i = 0, pos = 2;
-		buffer[0] = (byte) (NBE / 127);
-		buffer[1] = (byte) (NBE % 127);
+		int index = 0, positionOfBuffer = 2;
+		defaultBuffer[0] = (byte) (nextByte / 127);
+		defaultBuffer[1] = (byte) (nextByte % 127);
 		do {
 			try {
-				i = fReader.read();
-				if (i != 0) {
-					buffer[pos] = (byte) i;
-					pos++;
+				index = fileReaderObject.read();
+				if (index != 0) {
+					defaultBuffer[positionOfBuffer] = (byte) index;
+					positionOfBuffer++;
 				}
 			} catch (IOException ex) {
 			}
-			if (pos == buffer.length) {
+			if (positionOfBuffer == defaultBuffer.length) {
 				break;
 			}
-		} while (i != 0);
+		} while (index != 0);
 	}
 }
