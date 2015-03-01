@@ -1,0 +1,858 @@
+www.towson.edu
+HTTP/1.1 200 OK
+Connection: close
+Date: Thu, 04 Dec 2014 00:12:34 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Content-Length: 35511
+Content-Type: text/html
+Set-Cookie: ASPSESSIONIDQSADTABD=HNDJDPJDGCPBAEOIJJHJPEOL; path=/
+Cache-control: private
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- force non-compatibility mode in IE !-->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<title>Towson University</title>
+
+
+<META NAME="Publisher"                  CONTENT="Towson University">
+        <META NAME="Keywords"                   CONTENT="teacher education, teacher training, elementary education, special education, deaf studies, audiology, occupational therapy, occupational science, kinesiology, small business development, accounting programs, economic education, reading programstigers, applied learning, nursing">
+        <META NAME="Description"                CONTENT="Towson University, a top public university located near Baltimore, Maryland, offers nationally recognized academic programs that prepare 
+students with the leadership and professional skills necessary for today's world.
+">
+        <META NAME="Identifier-URL"             CONTENT="http://www.towson.edu/">
+        <META NAME="Content-Language"           CONTENT="en-US">
+        <META NAME="Coverage"                   CONTENT="Worldwide">
+
+<!-- SiteLink Search box !-->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "http://www.towson.edu/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "http://google.towson.edu/search?q={search_term}&site=default_collection&client=default_frontend&output=xml_no_dtd&proxystylesheet=default_frontend",
+    "query-input": "required name=search_term"
+  }
+}
+</script>
+<!-- End of the SiteLink !-->
+ 
+ <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11283030-1']);
+  _gaq.push(['_setDomainName', '.towson.edu']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style type="text/css">
+
+#sc-smartboard-container
+{ 
+	width:100%;
+	background-color: #cc0000;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-right: 0px;
+	padding-left: 0px; 
+	text-align:center;
+}
+
+#sc-smartboard-container .sc-smartboard-item 
+{
+	margin: 0 auto; 
+	width:978px;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	line-height: 18px;
+	text-align:left;
+}
+
+#sc-smartboard-container .sc-smartboard-subject 
+{
+    margin: 2px 10px 0px 10px;
+	font-size: 14px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	font-weight: bold;
+	line-height: 18px;
+	LETTER-SPACING: 0.5px;
+}
+
+#sc-smartboard-container .sc-smartboard-item:last-child 
+{
+	border-bottom-width: 0;
+}
+
+#sc-smartboard-container .sc-smartboard-datetime 
+{
+	margin: 0px 10px 0px 10px;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	float: right;
+}
+
+#sc-smartboard-container .sc-smartboard-message 
+{
+	clear: both;
+	margin: 2px 10px 2px 10px;
+	padding-top: 2px;
+	padding-bottom: 5px; 
+	border-top: 0px; 
+}
+
+#sc-smartboard-container .sc-smartboard-message a 
+{
+	clear: both;
+	color: #ffffff; 
+	text-decoration: underline;
+	margin: 2px 10px 2px 0px;
+	padding-top: 2px;
+	padding-bottom: 5px; 
+	border-top: 0px; 
+}
+
+</style>
+
+<script type="text/javascript" src="http://fast.fonts.com/jsapi/8eebd31e-3f65-43ac-8a29-aa303338e20c.js"></script> 
+
+<link rel="stylesheet" href="/main/css-home/main-home.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/main/css-home/main_print.css" type="text/css" media="print" />
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="/main/css-home/mainIE.css" type="text/css" media="screen" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="/main/css-home/jqueryComponents.css" media="all">
+
+
+<!--- Carousel JQuery --->
+<script type="text/javascript" src="/main/inc/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/main/inc/jquery.nivo.slider.pack.js"></script>
+    
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+<!--- END Carousel JQuery --->
+  
+  
+
+  
+<!--- Gallery JQuery --->  
+<script type="text/javascript" src="/main/homeparts/js/jquery.ad-gallery.js"></script>
+<script type="text/javascript">
+  $(function() {
+    var galleries = $('.ad-gallery').adGallery();
+    
+    
+    $(document).ready(function(){
+        galleries[0].settings.description_wrapper = $('#descriptions');
+        
+      }
+    );
+  });
+</script>
+<!--- END Gallery JQuery --->
+
+
+<!--- Scrollpane JQuery --->
+
+<script type="text/javascript" src="/main/homeparts/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/main/homeparts/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="/main/homeparts/js/jquery.contentcarousel.js"></script>
+
+<!--- END Scrollpane JQuery --->
+
+
+</head>
+
+<body id="tuhomepage">
+
+
+<div id="skiptolinks"> <a href="#main-content-jump">skip to main content</a> 
+</div>
+
+
+<div id="headerbg">
+		<div id="centeredpage">
+			<div id="globalheader">
+     			<div id="yellowarea">
+       			<ul id="main-secondary-nav">
+            	<li><a href="http://www.towson.edu/alumni/" id="nav7">Alumni</a> </li>
+            	<li><a href="https://inside.towson.edu/intranetStudents/welcome.asp" id="nav8">Students</a> </li>
+            	<li id="navpost">|</li>
+            	<li><a href="https://inside.towson.edu/mytu/MyTU.asp" id="nav1">My TU</a> </li>
+            	<li><a href="http://inside.towson.edu/directorySearch/index.cfm" id="nav2">Directory</a> </li>
+
+            	<li><a href="http://www.towson.edu/main/calendar/" id="nav3">Calendars</a> </li>
+            	<li><a href="http://www.towson.edu/main/marketplace/" id="nav4">Store</a> </li>
+            	<li><a href="http://www.towson.edu/main/library/" id="nav5">Library</a> </li>
+            	<li><a href="http://www.towson.edu/main/maps/" id="nav6">Maps</a> </li>
+        		</ul>
+					<div id="searchbar">
+       				<form method="get" action="http://google.towson.edu/search" class="main-search">    
+            		<input type="text" name="q" value="Search TU" onfocus="if(this.value =='Search TU'){this.value = ''}; $('#myspan').show()" class="searchBox"  style="width:143px;" />
+            		<input name="btnG" class="searchbutton" type="image" src="/main/homeparts/images/magnifyingglass.png" alt="Submit Search" align="middle" />
+            		<input type="hidden" name="site" value="default_collection"/>
+            		<input type="hidden" name="client" value="default_frontend"/>
+            		<input type="hidden" name="proxystylesheet" value="default_frontend"/>
+            		<input type="hidden" name="output" value="xml_no_dtd"/>
+        			</form>
+        			</div>
+				</div>
+       			<div id="lowerlinks">
+                	<div id="logo"><a href="http://www.towson.edu/"><img src="/main/images/spacer.gif" alt="Towson University" width=136 height=87 border=0></a>
+      				</div>
+       				<div id="globalnav">
+        		<ul id="main-nav">
+            	<li><a href="http://www.towson.edu/main/abouttu/index.asp" id="navBottom1">About TU</a></li>
+            	<li><a href="http://www.towson.edu/main/academics/index.asp" id="navBottom2">Academics</a></li>
+            	<li><a href="http://www.towson.edu/main/admissions/index.asp" id="navBottom3">Admissions</a></li>
+            	<li><a href="http://www.towson.edu/main/research/" id="navBottom4">Research</a></li>
+            	<li><a href="http://www.towson.edu/main/lifetu/index.asp" id="navBottom5">Campus Life</a></li>
+				<li><a href="http://tunews.towson.edu/" id="navBottom6">News</a></li>
+            	<li><a href="http://www.towson.edu/main/artsculture/index.asp" id="navBottom7">Arts & Culture</a></li>
+            	<li><a href="http://www.towson.edu/main/athletics/index.asp" id="navBottom8">Athletics</a></li>
+            	<li><a href="http://www.towson.edu/tuinthecommunity/" id="navBottom9">TU in the Community</a></li>
+            	<li><a href="http://www.towson.edu/main/supporttu/index.asp" id="navBottom10">Giving</a></li>
+        		</ul>
+      				</div>
+                </div>
+			</div>
+		</div>
+</div>
+
+<a name="main-content-jump" id="main_area"></a>
+<!--- The Live e2Campus widget --->
+
+<script type="text/javascript" src="http://widgets.omnilert.net/cb222c058e5bb27eeae3804dfac17bca-9326"></script> 
+
+
+<!--- old way, no longer used:  JCL 8/19/13  --->
+
+
+
+<div id="contentbg-blank">
+    <div id="contentholder">
+    	<div id="top_featurearea">
+    	<div class="slider-wrapper theme-default">
+            <div class="ribbon"></div>
+           	<div id="slider" class="nivoSlider"> 
+
+
+
+<!-- Three to six stories in the same format as the example below:
+ 		
+       <a href="http://grad.towson.edu/program/master/scmg-ms/" target="_blank" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Supply Chain']);"><img src="/main/homeparts/images/topcarousel/feature_2.png" alt="Supply Chain Management Masters Program"/></a> 
+
+!-->
+
+<!-- ////// For the 'event' info, use a very short description on the last quoted: ['_trackEvent', 'Carousel', 'Click', 'Supply Chain'] ///// -->
+
+<a href="http://www.towson.edu/main/stories/reachingnewheights.asp" target="_self" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Reaching New Heights']);"><img src="/main/homeparts/images/topcarousel/reachingNewHeights_panel.jpg" alt="Reaching New Heights. Students gain new perspective trekking through Peru. Read More."/></a> 
+
+<a href="http://www.towson.edu/main/stories/workofart.asp" target="_self" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Work of Art']);"><img src="/main/homeparts/images/topcarousel/work_of_art.jpg" alt="Work of Art. A TU alumnus is honored with solo show at the Baltimore Museum of Art.  Read More."/></a>
+
+<a href="http://www.towson.edu/main/stories/baltimorerewired.asp " target="_self" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Baltimore ReWired']);"><img src="/main/homeparts/images/topcarousel/baltimorerewired_homePanel.jpg" alt="Baltimore ReWired. TU researchers get community voices heard. Read More."/></a> 
+
+<a href="http://www.towson.edu/main/stories/givingahandup.asp" target="_self" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Giving a Hand Up']);"><img src="/main/homeparts/images/topcarousel/givingahandup.jpg" alt="Giving a Hand Up. Honors College students take on global poverty - one small loan at a time. Read More."/></a> 
+
+<a href="http://www.towson.edu/main/stories/actinglocally.asp" target="_self" onClick="_gaq.push(['_trackEvent', 'Carousel', 'Click', 'Acting Locally]);"><img src="/main/homeparts/images/topcarousel/actingLocally_v2.jpg" alt="Acting Locally. Students craft business plan for Towson restauranteur. Read More"/></a> 
+
+
+
+
+
+
+
+                   
+ 
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+
+<!--<a href="http://www.towson.edu/main/stories/inotherwords.asp" target="_self"><img src="/main/homeparts/images/topcarousel/feature_3.jpg" alt="In Other Words - Towson University students take Spanish out of the classroom and into the community."/></a> -->
+
+
+
+
+
+
+			</div>
+         </div>
+         </div>
+	
+        <div id="center_threebox_content">
+       <!--- Left Box --->
+       
+        	<div id="leftcontent">
+        
+        	<h2 class="thehead">Top Stories</h2>
+            
+            <!--- Use this format for the stories below -- no more than 5 stories:
+
+<p class="linebelow"><a href="http://tunews.towson.edu/2014/07/15/towson-alumna-breaks-another-record-on-american-ninja-warrior/"><strong>Towson alumna breaks another record</strong> on “American Ninja Warrior”</a></p>
+
+For the last story on the list, use this format (the difference is the <p> tag without class="linebelow":
+
+<p><a href="http://tunews.towson.edu/2014/07/09/honors-college-partners-with-seelio-to-showcase-student-success/">Honors College partners with Seelio to <strong>showcase student success</strong></a></p>
+
+--->
+
+
+<p class="linebelow"><a href="http://tunews.towson.edu/2014/09/10/u-s-news-world-report-ranks-towson-among-top-public-regional-universities/"><em>U.S. News &amp; World Report</em> ranks <strong>Towson among top public regional universities</strong></a></p>
+
+<p class="linebelow"><a href="http://tunews.towson.edu/2014/09/09/physics-professor-awarded-usm-elkins-professorship/"><strong>Physics professor awarded</strong> USM Elkins Professorship</a></p>
+
+<p class="linebelow"><a href="http://tunews.towson.edu/2014/08/22/student-safety-improved-with-towsons-west-village-pedestrian-bridge/"><strong>Student safety improved</strong> with Towson's West Village pedestrian bridge</a></p>
+
+<p class="linebelow"><a href="http://tunews.towson.edu/2014/09/04/freshman-dance-team-class-joins-the-best-of-the-best/">Freshman dance team class joins the <strong>best of the best</strong></a></p>
+
+<p><a href="http://tunews.towson.edu/2014/09/05/anthropology-professor-sam-collins-conducts-social-media-networking-research-in-s-korea/">Anthropology <strong>professor conducts social media research</strong> in South Korea</a></p>
+
+            
+          
+            <p class="moreinfo" style="margin:0px;padding:0px 15px 20px 0px;"><a href="http://tunews.towson.edu/">More Stories</a> &nbsp; <img src="/main/homeparts/images/gallerycontrols/ad_scroll_forward.png" alt="Link Arrow"></p>
+            
+            
+        	</div>
+        
+        <!--- END Left Box --->
+        
+        <!--- Right Box --->
+        
+        
+        <div id="rightcontent">
+        
+        <h2 class="thehead">This Week's Photos</h2>
+        
+        
+        
+        <div id="gallery" class="ad-gallery">
+      		<div class="ad-image-wrapper">
+      		</div>
+      		<div id="descriptions">
+
+    		</div>
+    		<div class="ad-nav">
+       			<div class="ad-thumbs">
+          		<ul class="ad-thumb-list">
+                
+                
+        
+        
+        <!--  Keep the <li> and </li> around each photo.  Keep the formatting the exactly the same as the example below for every new photo:
+        
+        			<li>
+              			<a href="/main/homeparts/images/gallery/photo_1.jpg">
+                		<img src="/main/homeparts/images/gallery/thumbs/thumb_1.jpg" title="A title for 1.jpg" alt="This is a nice, and incredibly descriptive, description of the image 1.jpg" class="image0">
+              			</a>
+            		</li>
+        
+        
+         !-->
+              <li>
+             <a href="/main/homeparts/images/gallery/Glen_Arboretum_goats.jpg">
+                <img src="/main/homeparts/images/gallery/thumbs/Glen_Arboretum_goats_thumb.jpg" alt="A goat dines on the invasive English ivy plants in the Glen Arboretum." class= "Goats in TU’s Glen Arboretum">
+             </a>
+         </li>
+         
+         
+             <li>
+             <a href="/main/homeparts/images/gallery/Legends_dance_performance.jpg">
+                <img src="/main/homeparts/images/gallery/thumbs/Legends_dance_performance_thumb.jpg" alt="Dance Company students perform to music by iconic musicians in the <i>Legends</i> concert." class= "Towson University’s Dance Company">
+             </a>
+         </li>
+                                
+             <li>
+             <a href="/main/homeparts/images/gallery/Fall_campus_2014.jpg">
+                <img src="/main/homeparts/images/gallery/thumbs/Fall_campus_2014_thumb.jpg" alt="Towson students enjoy walking through the campus in the fall." class= "Towson University’s Fall Campus">
+             </a>
+         </li>
+                     
+         
+         <li>
+             <a href="/main/homeparts/images/gallery/TU_Rugby.jpg">
+                <img src="/main/homeparts/images/gallery/thumbs/TU_Rugby_thumb.jpg" alt="Towson's rugby team advances to the national championship." class= "TU Rugby">
+             </a>
+         </li>
+ 
+
+          <li>
+             <a href="/main/homeparts/images/gallery/TU_forensic_science.jpg">
+                <img src="/main/homeparts/images/gallery/thumbs/TU_forensic_science_thumb.jpg" alt="The forensic science master's program can include internships in a forensic laboratory." class= "TU Forensic Science Graduate Students">
+             </a>
+         </li>
+        
+        
+       
+       
+      
+            
+           
+            
+            
+            
+       
+         
+           
+        
+     
+          
+            
+             
+           
+        		
+               
+               
+               <!-- This last part is for editing the Flickr Gallery link only.  Do not edit any other code !-->
+                
+                
+                </ul>
+        		</div>
+      		</div>
+         </div>
+    	
+    
+    <p class="moreinfo" style="padding:0px 15px 20px 0px;"><a href="http://www.flickr.com/photos/89891104@N06/sets/72157632178321858/show/" target="_blank">Full Gallery on Flickr</a> &nbsp; <img src="/main/homeparts/images/gallerycontrols/ad_scroll_forward.png" alt="Link Arrow"></p>
+                
+            
+    
+  </div>
+        
+        <!--- END Right Box --->
+        
+        <!--- Center Box --->
+        
+        
+        <div id="centercontent">
+        
+        <h2 class="thehead">Upcoming Events</h2>
+        
+        
+        
+        
+        <!-- Maximum of three events or 15 lines.  About 25 characters per line.  Keep formatting exactly like the below example:
+        
+        		<div class="eventlisting">
+        		<div class="thedate"><div class="month">JAN</div><div class="day">05</div></div>
+        		<div class="eventinfo"><h3>EMF End of Semester Project Screenings</h3>
+        		<p>1/16 - 7:00pm</p>
+        		<p>Friday, December 16, 7p.m. - Film 2 and Film 3 Saturday, Dec.17</p>
+        		</div>
+        		</div>
+        
+        !-->  
+                 
+            
+        <div class="eventlisting" >
+                  <div class="thedate">
+                    <div class="month">Dec.</div>
+                    <div class="day">3</div>
+                  </div>
+                  <div class="eventinfo">
+                   <h3><a href="https://oss.ticketmaster.com/aps/towson/EN/buy/browse/?&SPSID=101455&SPID=12497&DB_OEM_ID=21300&i[0]=70">Men's Basketball</a></h3>
+                    <p>7 p.m., SECU Arena</p>
+                    <p>Support the Towson Tigers as they take on Coppin State at SECU arena.</p>
+        </div> 
+        </div>
+                
+        <div class="eventlisting" style="border-top: 1px solid #000; padding-top: 10px;">
+                  <div class="thedate">
+                    <div class="month">Dec.</div>
+                    <div class="day">5</div>
+                  </div>
+                  <div class="eventinfo">
+                    <h3><a href="http://events.towson.edu/event/halfway_there_media_festival_3882#.VGo6VfnF98E">Media Festival</a></h3>
+                    <p>7 p.m., Van Bokkelen Auditorium</p>
+                    <p>Come to the Halfway There Media Festival, a presentation of student film, video, audio and digital media projects.</p>
+        </div>
+		</div>
+        
+        <div class= "eventlisting" style="border-top: 1px solid #000; padding-top: 10px;">
+                  <div class="thedate">
+                    <div class="month">Dec.</div>
+                    <div class="day">19</div>
+                  </div>
+                  <div class="eventinfo">
+                    <h3><a href= "http://events.towson.edu/event/what_was_the_christmas_star_-_planetarium_show_3283#.VG-tzYvF98E">Planetarium Show</a></h3>
+                    <p>7-8 p.m., Smith Hall</p>
+                    <p>Come hear the scientific perspective, from recent speculation about ancient astrology and more modern astronomical discoveries, on the Christmas star.</p>
+        </div>
+        </div>
+        
+        
+        <p class="moreinfo" style="padding:0px 15px 20px 0px;"><a href="http://events.towson.edu/">Master Events Calendar</a> &nbsp; <img src="/main/homeparts/images/gallerycontrols/ad_scroll_forward.png" alt="Link Arrow"></p>
+        
+        </div>
+       
+        
+       <!--- END Center Box --->
+    
+        
+        
+        
+        
+        </div>
+        
+        
+        
+        
+        
+        <div id="bottomcontent">
+        
+        <div id="ca-container" class="ca-container">
+				<div class="ca-wrapper">
+                
+                
+
+
+<!-- Minimum 5 items so the scroll works.  Keep the formatting for each new item exactly like the below example and add a new incremental number in the appropriate place:
+
+						<div class="ca-item ca-item-1">
+						<div class="ca-item-main">
+							<img src="/main/homeparts/images/promoItem_1.jpg" width=154 height=134 border=0 alt="Image">
+							<h3>Explore It</h3>
+							<h4>Visit us this summer. Come for a campus tour or an open house.
+							</h4>
+								
+						</div>
+                        
+                   	</div>
+
+
+!-->
+
+<!-- BORDER ON IMAGES -->
+<!--<style>
+div.ca-item-main img
+{border:1px solid #000000;}
+</style>-->
+ 
+    
+    <div class="ca-item ca-item-1">
+            <div class="ca-item-main">
+    <a href="http://www.towson.edu/main/admissions/applynow.asp">	<img src="/main/homeparts/images/promoters/applyNow_promo.jpg" width=154 height=134 border=0 alt="Apply Now"></a>
+    <a href="http://www.towson.edu/main/admissions/applynow.asp">
+		 <h3>Apply Now</h3></a>
+							<h4>Complete your application and join us in Tigertown.</h4>
+	</div>
+	</div>
+    
+    
+    <div class="ca-item ca-item-2">
+						<div class="ca-item-main">
+						<a href="http://web.towson.edu/cbe/news/theassociate/">	<img src="/main/homeparts/images/promoters/associate_promo.jpg" width=154 height=134 border=0 alt="The Associate"></a>
+							<a href="http://web.towson.edu/cbe/news/theassociate/">
+						  <h3>The Associate</h3></a>
+							<h4>Compete for real job offers. Learn more about the Associate competition.</h4>		
+						</div>
+						</div>  
+                   
+                         <div class="ca-item ca-item-3">
+						<div class="ca-item-main">
+						<a href="http://events.towson.edu/event/legends_8052#.VHSb7YvF98E">	<img src="/main/homeparts/images/promoters/legends_promo.jpg" width=154 height=134 border=0 alt="Legends Dance Concert"></a>
+							<a href="http://events.towson.edu/event/legends_8052#.VHSb7YvF98E">
+						  <h3>Legends Concert</h3></a>
+							<h4>Come see TU's Dance Company presentation of the “Legends” concert.</h4>
+						</div>
+						</div>
+                                                                      
+                     
+                     <div class="ca-item ca-item-4">
+						<div class="ca-item-main">
+						<a href="http://www.towson.edu/uteach/">	<img src="/main/homeparts/images/promoters/uteach_promo.jpg" width=154 height=134 border=0 alt="Towson UTeach"></a>
+							<a href="http://www.towson.edu/uteach/">
+						  <h3>Towson UTeach</h3></a>
+							<h4>Learn how Towson UTeach can prepare you to teach science and math.</h4>		
+						</div>
+						</div>
+                        
+                        <div class="ca-item ca-item-5">
+						<div class="ca-item-main">
+						<a href="http://www.towson.edu/main/abouttu/glance/campus/glen/">	<img src="/main/homeparts/images/promoters/The_Glen_Arboretum_promo.jpg" width=154 height=134 border=0 alt="The Glen Arboretum"></a>
+							<a href="http://www.towson.edu/main/abouttu/glance/campus/glen/">
+						  <h3>The Glen Arboretum</h3></a>
+							<h4>Learn about TU’s history. Visit the Glen Arboretum website.</h4>		
+						</div>
+						</div>
+                                 
+                                             
+                        <div class="ca-item ca-item-6">
+						<div class="ca-item-main">
+						<a href="http://events.towson.edu/event/exhibition_meditation#.VG9GKPnF98E">	<img src="/main/homeparts/images/promoters/meditation-homepage-promoter.jpg" width=154 height=134 border=0 alt="Meditation Exhibition"></a>
+							<a href="http://events.towson.edu/event/exhibition_meditation#.VG9GKPnF98E">
+						  <h3>Meditation Exhibition</h3></a>
+							<h4>Explore meditation traditions at the Asian Arts and Culture Center.</h4>		
+						</div>
+						</div>
+                         
+                                                                                                        <div class="ca-item ca-item-7">
+            <div class="ca-item-main">
+    <a href="http://www.towson.edu/innovation/partnerships-and-outreach/womens-leadership/">	<img src="/main/homeparts/images/promoters/women's-leadership-promo.jpg" width=154 height=134 border=0 alt="Women's Leadership"></a>
+    <a href="http://www.towson.edu/innovation/partnerships-and-outreach/womens-leadership/">
+		 <h3>Women's Leadership</h3></a>
+							<h4>Learn more about TU’s new Professional Leadership Program for Women.</h4>
+	</div>
+	</div>   
+                            
+
+						
+</div>
+                        
+                    
+                    
+               
+         
+					
+                    
+                    
+	
+                    
+             
+                    
+ 	
+                    						
+             
+
+						
+                
+					
+						
+					</div>
+					
+				</div>
+			</div>
+			
+	
+		
+        
+        
+        </div>	
+        </div>
+    </div>
+</div>
+
+<!-- Start Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+ 
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+ 
+_qevents.push(
+{qacct:"p-18SyZUJaqXU8g",labels:"_fp.event.Towson Homepage"}
+);
+</script>
+<noscript>
+<img src="//pixel.quantserve.com/pixel/p-18SyZUJaqXU8g.gif?labels=_fp.event.Towson+Homepage" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- Code for Action: 3.18.14 Towson Branding Spring- Tracking -->
+<!-- Begin Rocket Fuel Conversion Action Tracking Code Version 7 -->
+<img src='http://20554641p.rfihub.com/ca.gif?rb=8879&ca=20554641&ra=[%Random%]' height=0 width=0 style='display:none' alt='Rocket Fuel'/>
+<!-- End Rocket Fuel Conversion Action Tracking Code Version7 -->
+
+<div id="QLBG">
+<div id="quicklinks">
+    <h3>Quick Links</h3>
+   	
+    
+    
+    
+<div id="QL-box1">
+   	  <ul>
+   	    	<li><a href="http://www.towson.edu/registrar/calendars/">Academic Calendar</a></li><br /><br />
+        	<li><a href="http://www.towson.edu/main/academics/deptsandprograms.asp">Academic Departments</a></li><br /><br />
+      		<li><a href="http://www.towson.edu/main/abouttu/access/">Accessibility</a></li><br /><br />
+        	<li><a href="http://www.towson.edu/main/abouttu/admingov/">Administration</a></li><br /><br />
+        	<li><a href="https://blackboard.towson.edu/webapps/portal/frameset.jsp">Blackboard</a></li><br /><br />
+            
+      </ul>
+    </div>
+     
+    
+<div id="QL-box5">
+        <ul>
+       	  
+          <li><a href="http://www.towson.edu/adminfinance/auxservices/parking/">Parking Services</a></li><br /><br />
+          <li><a href="http://www.towson.edu/registrar/index.asp">Registrar</a></li><br /><br />
+           <li><a href="../../../registrar/Records/Transcript_Request.asp">Transcripts</a></li><br /><br />
+          <li><a href="https://inside.towson.edu/psLogin/">Towson Online Services</a></li><br /><br />
+          <li>
+          <a href="http://www.towson.edu/main/abouttu/visitor/">Visiting Towson</a>
+          </li>
+      </ul>
+    </div>
+     
+        	
+
+        	
+   
+<div id="QL-box4">
+        <ul>
+        	
+          
+            <li><a href="http://www.towson.edu/housing/">Housing & Residence Life</a></li><br /><br />
+            <li><a href="http://fusion.towson.edu/www/admissions/academic/majors/index.cfm">Majors</a></li><br /><br />
+            <li><a href="http://www.towson.edu/adminfinance/ots/">Office of Technology Services</a></li><br /><br />
+            <li><a href="https://services.jsatech.com/index.php?cid=11">OneCard</a></li><br /><br />
+            <li><a href="http://www.towson.edu/main/parents/">Parents' Resources</a></li><br /><br />
+        </ul>
+    </div>
+        
+    
+    
+<div id="QL-box3">
+        <ul>
+        	
+          <li><a href="http://www.towson.edu/main/abouttu/comdiv/">Diversity Commitment</a></li><br /><br />
+          <li><a href="../../../adminfinance/facilities/police/">Emergencies</a></li><br /><br />
+          <li><a href="../../../adminfinance/hr/">Employment</a></li><br /><br />
+          <li><a href="../../finaid/">Financial Aid</a></li><br /><br />
+            <li><a href="../../../healthcenter/">Health Center</a></li><br /><br />
+      </ul>
+    </div>
+    
+    
+    
+<div id="QL-box2">
+        <ul>
+        	
+            <li><a href="http://www.towson.edu/adminfinance/fiscalplanning/bursar/">Bursar / Pay Bills</a></li><br /><br />
+            <li><a href="http://www.towson.edu/main/lifetu/safety/index.asp">Campus Safety</a></li><br /><br />
+            <li><a href="http://www.towson.edu/careercenter/index.asp">Career Center</a></li><br /><br />
+            <li><a href="http://www.towson.edu/main/academics/colleges/">Colleges</a></li><br /><br />
+            <li><a href="http://inside.towson.edu/directorySearch/index.cfm">Directory / Phone Numbers</a></li><br /><br />
+        </ul>
+    </div>    	
+    
+        	
+
+</div>
+</div><div id="contactbg">
+	<div id="contactfooter">
+        	<div id="contact-box1">
+        	<a href="http://www.towson.edu/main/maps/"><img src="/main/homeparts/images/locatormap.jpg" alt="Map" width=192 height=124></a>
+        	</div>
+        	<div id="contact-box2">
+        	<p style="margin-top:20px;"><a href="http://www.towson.edu/main/maps/">Campus Maps</a></p>
+            <p style="margin-top:10px;"><a href="http://www.towson.edu/main/abouttu/visitor/dircampus.asp">Directions & Parking</a></p>
+            <p style="margin-top:10px;"><a href="http://www.towson.edu/main/abouttu/visitor/campustours.asp">Campus Tours</a></p>
+        	</div>
+        	<div id="contact-box3">
+        		<div class="socialmedia_desc">
+                <p><a href="https://www.facebook.com/towsonuniversity">Connect with us on Facebook</a></p>
+                <p><a href="http://twitter.com/TowsonU">Get news and updates on Twitter</a></p>
+                
+                </div>
+                <div class="socialmedia_img">
+                <p><a href="https://www.facebook.com/towsonuniversity"><img src="/main/homeparts/images/facebook_bottom.png" alt="Facebook"></a></p>
+                <p><a href="http://twitter.com/TowsonU"><img src="/main/homeparts/images/twitter_bottom.png" alt="Twitter"></a></p>
+                
+                </div>
+        	</div>
+        	<div id="contact-box4">
+        		<div class="socialmedia_desc">
+                <p><a href="http://www.linkedin.com/edu/school?id=18562">Join our TU group on LinkedIn</a></p>
+                <p><a href="http://www.youtube.com/TowsonUniversity">Subscribe to our YouTube channel</a></p>
+                </div>
+                <div class="socialmedia_img">
+                <p><a href="http://www.linkedin.com/edu/school?id=18562"><img src="/main/homeparts/images/linkedin_bottom.png" alt="Linked In"></a></p>
+                <p><a href="http://www.youtube.com/TowsonUniversity"><img src="/main/homeparts/images/youtube_bottom.png" alt="You Tube" style="margin-top:7px;"></a></p>
+                
+                </div>
+            </div>
+            <div id="contact-box5">
+            	<div class="socialmedia_desc">
+                <p><a href="http://instagram.com/towsonuniversity">Follow us on<br />Instagram</a></p>
+                <p><a href="https://plus.google.com/+towsonuniversity/posts">Join our community on Google+</a></p>
+                
+                </div>
+                <div class="socialmedia_img">
+                <p><a href="http://instagram.com/towsonuniversity"><img src="/main/homeparts/images/instagram_bottom.png" alt="Flickr"></a></p>
+                <p><a href="https://plus.google.com/+towsonuniversity/posts"><img src="/main/homeparts/images/googleplus_bottom.png" alt="Google+"></a></p>
+                
+                
+                </div>
+                
+            </div>
+   	  </div>
+  </div>
+</div><div id="footerbg">
+<div id="footer">
+        	<div id="leftfooter">
+        	<img src="http://www.towson.edu/main/admissions/images/TU_horizontalLogo.png" alt="Towson University" width="172" height="31" /> 8000 York Road &nbsp;|&nbsp; Towson, MD 21252 &nbsp;|&nbsp; 410-704-2000
+        	</div>
+        	<div id="rightfooter">
+        	&copy;2014 <a href="http://www.towson.edu/main/copyright.asp">Copyright</a> | <a href="http://www.towson.edu/main/privacy.asp">Privacy</a> | <a href="http://www.towson.edu/adminfinance/facilities/police/clery/">Clery Report</a> | <a href="http://www.towson.edu/main/contact.asp">Contact Us</a>
+        	</div>
+        </div>
+    </div>
+
+   <!-- The below script is necessary for the function of the bottom carousel !-->         	
+
+<script type="text/javascript">
+			$('#ca-container').contentcarousel();
+		</script>
+
+    <!--- ////////////////////////////////////////////////////////
+      Pixel code for campaign tracking - placed on 10/24/2014
+    ////////////////////////////////////////////////////////// --->
+    
+    <IFRAME SRC="https://www.imiclk.com/cgi/r.cgi?m=3&mid=LC1WfvXQ&ptid=HOME" FRAMEBORDER="0" SCROLLING="NO" WIDTH="0" HEIGHT="0"> </IFRAME>
+        
+        <img src="https://www.imiclk.com/cgi/r.cgi?m=3&mid=LC1WfvXQ&ptid=HOME&sp=1" width="1" height="1" border="0">
+    
+    <!--- ////////////////////////////////////////////////////////
+                                  END
+    ////////////////////////////////////////////////////////// --->
+        
+        
+        
+    <!--- ////////////////////////////////////////////////////////
+      Bright Roll pixel code for campaign tracking - placed on 11/25/2014
+    ////////////////////////////////////////////////////////// --->
+    
+    <img src="http://c126503.conv.btrll.com/v1/cpix/-/-/-/-/-/cpid.126503" height="1" width="1" />
+    
+    <!--- ////////////////////////////////////////////////////////
+                                  END
+    ////////////////////////////////////////////////////////// --->
+        
+
+</body>
+</html>

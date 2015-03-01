@@ -1,0 +1,19 @@
+www.hotmail.com
+HTTP/1.1 301 Moved Permanently
+Cache-Control: no-cache, no-store, must-revalidate, no-transform
+Pragma: no-cache
+Content-Type: text/html; charset=utf-8
+Expires: -1
+Location: https://mail.live.com/default.aspx
+Server: Microsoft-IIS/7.5
+xxn: 38
+P3P: CP="BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo"
+MSNSERVER: H: BLU174-W38 V: 17.4.8317.6002 D: 2014-11-17T23:12:54
+X-Powered-By: ASP.NET
+Date: Thu, 04 Dec 2014 00:12:33 GMT
+Connection: close
+Content-Length: 151
+
+<html><head><title>Object moved</title></head><body>
+<h2>Object moved to <a href="https://mail.live.com/default.aspx">here</a>.</h2>
+</body></html>
